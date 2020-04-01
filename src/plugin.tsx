@@ -1,5 +1,5 @@
 import { Plugins } from 'phaser';
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import ReactDOM from 'react-dom';
 
 import Renderer from './renderer';
@@ -9,11 +9,11 @@ import manager from './manager';
 type PluginOptions = {
   // the parent element's id to render react dom into
   // if not set will wrap the game canvas with a div and render to that.
-  parent: string,
+  parent: string;
   // if we shouldn't inject our own react dom
   // useful if you already have react
-  dontInjectReact: boolean
-}
+  dontInjectReact: boolean;
+};
 
 class ReactUI extends Plugins.BasePlugin {
   constructor(pluginManager: Plugins.PluginManager) {
@@ -24,28 +24,20 @@ class ReactUI extends Plugins.BasePlugin {
   }
 
   init(options?: PluginOptions) {
-
     if (options.dontInjectReact) return;
     if (!options.parent) {
       let parent = document.createElement('div');
       parent.appendChild(this.game.canvas);
 
-      ReactDOM.render(
-        <Renderer />,
-        parent
-      );
+      ReactDOM.render(<Renderer />, parent);
     } else {
-      ReactDOM.render(
-        <Renderer />,
-        document.getElementById(options.parent)
-      )
+      ReactDOM.render(<Renderer />, document.getElementById(options.parent));
     }
   }
 
   createReactDom(component: ReactNode, props: Object) {
     return manager.addUI(component, props);
   }
-
 }
 
 export default ReactUI;

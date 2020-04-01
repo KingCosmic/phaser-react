@@ -7,18 +7,27 @@
   "author": "Austyn Studdard <KingCosmicDev@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "parcel build ./src/index.tsx --target node"
+    "build": "webpack -p ./src/index.tsx"
   },
   "dependencies": {
+    "@types/react-dom": "^16.9.6",
+    "@types/webpack": "^4.41.10",
     "eventemitter3": "^4.0.0"
   },
   "devDependencies": {
     "@types/react": "^16.9.29",
-    "parcel-bundler": "^1.12.4",
     "phaser": "^3.22.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "typescript": "^3.8.3"
+    "ts-loader": "^6.2.2",
+    "ts-node": "^8.8.1",
+    "typescript": "^3.8.3",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
   },
-  "peerDependencies": {}
+  "peerDependencies": {
+    "phaser": "^3.22.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
 }
