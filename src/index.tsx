@@ -1,26 +1,4 @@
-import { Plugins } from 'phaser';
-import React, { ReactNode } from 'react';
-import ReactDOM from 'react-dom';
+import Plugin from './plugin';
 
-import Renderer from './renderer';
-
-import manager from './manager';
-
-class ReactUI extends Plugins.BasePlugin {
-  constructor(pluginManager: Plugins.PluginManager) {
-    super(pluginManager);
-
-    //  Register our new Game Object type
-    pluginManager.registerGameObject('reactDom', this.createReactDom);
-  }
-
-  init(data?: Object) {
-    ReactDOM.render(<Renderer />, this.game.canvas);
-  }
-
-  createReactDom(component: ReactNode, props: Object) {
-    return manager.addUI(component, props);
-  }
-}
-
-export default ReactUI;
+export { default as Renderer } from './renderer';
+export default Plugin;
