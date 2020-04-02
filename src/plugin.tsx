@@ -15,6 +15,11 @@ type PluginOptions = {
   dontInjectReact: boolean;
 };
 
+const defaultOptions: PluginOptions = {
+  parent: undefined,
+  dontInjectReact: false
+}
+
 class ReactUI extends Plugins.BasePlugin {
   constructor(pluginManager: Plugins.PluginManager) {
     super(pluginManager);
@@ -23,9 +28,11 @@ class ReactUI extends Plugins.BasePlugin {
     pluginManager.registerGameObject('reactDom', this.createReactDom);
   }
 
-  init(options?: PluginOptions) {
+  init(options: PluginOptions = defaultOptions) {
     // did they set a parent on the game config?
     let gameParent = this.game.config.parent;
+
+    options.parent = options.parent || gameParent;
 
     // don't inject react if the user wants to use this plugin in react.
     if (options.dontInjectReact) return;
@@ -39,7 +46,6 @@ class ReactUI extends Plugins.BasePlugin {
 
       ReactDOM.render(<Renderer />, reactcont);
     } else {
-      console.log(typeof gameParent)
 
       ReactDOM.render(<Renderer />, document.getElementById(options.parent));
     }
