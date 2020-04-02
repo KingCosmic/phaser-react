@@ -2,12 +2,12 @@
 
 ### npm
 ```
-npm install -S phaser-react
+npm install -S phaser3-react
 ```
 
 ### yarn
 ```
-yarn add phaser-react
+yarn add phaser3-react
 ```
 
 ## Usage
