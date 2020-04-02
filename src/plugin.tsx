@@ -27,8 +27,8 @@ class ReactUI extends Plugins.BasePlugin {
     if (options.dontInjectReact) return;
     if (!options.parent) {
       let cont = document.createElement('div');
-      cont.appendChild(this.game.canvas);
       document.body.appendChild(cont);
+      cont.appendChild(this.game.canvas);
 
       ReactDOM.render(<Renderer />, cont);
     } else {
