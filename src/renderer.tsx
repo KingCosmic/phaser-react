@@ -46,7 +46,7 @@ class Renderer extends Component<Props, State> {
       <>
         {
           components.map(({ Component, props, manager }) => {
-            return <Wrapper Comp={Component} extraProps={props} manager={manager} />
+            return <Wrapper key={manager.id} Comp={Component} extraProps={props} manager={manager} />
           })
         }
       </>

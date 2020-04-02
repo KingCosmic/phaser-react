@@ -44,6 +44,10 @@ class ReactUI extends Plugins.BasePlugin {
       cont.appendChild(reactcont);
       cont.style.position = 'relative'
       reactcont.style.position = 'absolute';
+      reactcont.style.top = '0'
+      reactcont.style.left = '0'
+      reactcont.style.width = '100%'
+      reactcont.style.height = '100%'
 
       ReactDOM.render(<Renderer />, reactcont);
     } else {
