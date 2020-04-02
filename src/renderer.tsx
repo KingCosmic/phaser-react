@@ -8,6 +8,7 @@ type Comp = {
   Component: Component,
   props: Object,
   manager: ComponentManager
+  mainManager: typeof manager;
 }
 
 type Props = {
@@ -30,12 +31,19 @@ class Renderer extends Component<Props, State> {
   }
 
   componentDidMount() {
-    manager.events.on('ui-added', this.addComponent, this);
+    manager.events.on('component-added', this.addComponent, this);
+    manager.events.on('component-removed', this.removeComponent, this);
   }
 
-  addComponent(ui: Comp) {
+  addComponent(component: Comp) {
     this.setState({
-      components: [ui, ...this.state.components]
+      components: [component, ...this.state.components]
+    })
+  }
+
+  removeComponent(id: number) {
+    this.setState({
+      components: this.state.components.filter((Comp) => Comp.manager.id !== id)
     })
   }
 
@@ -45,8 +53,8 @@ class Renderer extends Component<Props, State> {
     return (
       <>
         {
-          components.map(({ Component, props, manager }) => {
-            return <Wrapper key={manager.id} Comp={Component} extraProps={props} manager={manager} />
+          components.map(({ Component, props, manager, mainManager }) => {
+            return <Wrapper key={manager.id} Comp={Component} extraProps={props} manager={manager} mainManager={mainManager} />
           })
         }
       </>

@@ -57,7 +57,7 @@ class ReactUI extends Plugins.BasePlugin {
   }
 
   createReactDom(component: Component, props: Object) {
-    return manager.addUI(component, props);
+    return manager.addComponent(component, props);
   }
 }
 

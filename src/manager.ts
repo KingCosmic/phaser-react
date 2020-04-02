@@ -1,15 +1,17 @@
 import eventemitter from 'eventemitter3';
-import { ReactNode } from 'react';
+import { Component } from 'react';
 
 export class ComponentManager {
   events: eventemitter;
+  mainManager: manager;
   id: number;
   state: Object;
 
-  constructor(id: number) {
+  constructor(id: number, mainManager: manager) {
     this.events = new eventemitter();
 
     this.id = id;
+    this.mainManager = mainManager;
     this.state = {};
   }
 
@@ -17,6 +19,10 @@ export class ComponentManager {
     this.state = { ...this.state, ...state };
 
     this.events.emit('state-change', this.state);
+  }
+
+  destroy() {
+    this.mainManager.removeComponent(this.id);
   }
 }
 
@@ -30,21 +36,22 @@ class manager {
     this.lastID = 0;
   }
 
-  addUI(component: ReactNode, props: Object): ComponentManager {
+  addComponent(component: Component, props: Object): ComponentManager {
     this.lastID++
 
-    let manager = new ComponentManager(this.lastID);
-    this.events.emit('ui-added', {
-      manager,
+    let manager = new ComponentManager(this.lastID, this);
+    this.events.emit('component-added', {
+      mainManager: this,
       Component: component,
+      manager,
       props
     })
 
     return manager;
   }
 
-  removeUI(id: number) {
-    this.events.emit('ui-removed', id);
+  removeComponent(id: number) {
+    this.events.emit('component-removed', id);
   }
 }
 

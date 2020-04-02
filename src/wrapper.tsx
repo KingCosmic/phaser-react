@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 
-import { ComponentManager } from './manager';
+import manager, { ComponentManager } from './manager';
 
 type Props = {
   extraProps: Object;
   manager: ComponentManager,
+  mainManager: typeof manager,
   Comp: any;
 }
 
@@ -23,10 +24,10 @@ class Wrapper extends Component<Props> {
   }
 
   render() {
-    const { Comp, manager } = this.props;
+    const { Comp, manager, mainManager } = this.props;
 
     return (
-      <Comp manager={manager} {...this.state} /> 
+      <Comp manager={manager} mainManager={mainManager} {...this.state} /> 
     )
   }
 }
