@@ -24,15 +24,21 @@ class ReactUI extends Plugins.BasePlugin {
   }
 
   init(options?: PluginOptions) {
+    // did they set a parent on the game config?
+    let gameParent = this.game.config.parent;
+
+    // don't inject react if the user wants to use this plugin in react.
     if (options.dontInjectReact) return;
-    if (!options.parent) {
+    if (!options.parent && !gameParent) {
       let cont = document.createElement('div');
       document.body.appendChild(cont);
-      cont.appendChild(this.game.canvas);
 
-      ReactDOM.render(<Renderer />, cont);
+      cont.appendChild(this.game.canvas);
+      let reactcont = cont.appendChild(document.createElement('div'));
+
+      ReactDOM.render(<Renderer />, reactcont);
     } else {
-      ReactDOM.render(<Renderer />, document.getElementById(options.parent));
+      ReactDOM.render(<Renderer />, document.getElementById(options.parent || gameParent));
     }
   }
 
