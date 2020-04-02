@@ -39,7 +39,7 @@ class ReactUI extends Plugins.BasePlugin {
 
       ReactDOM.render(<Renderer />, reactcont);
     } else {
-      ReactDOM.render(<Renderer />, document.getElementById(options.parent || gameParent));
+      ReactDOM.render(<Renderer />, document.getElementById(options.parent) || gameParent);
     }
   }
 
