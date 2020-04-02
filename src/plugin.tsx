@@ -29,7 +29,7 @@ class ReactUI extends Plugins.BasePlugin {
 
     // don't inject react if the user wants to use this plugin in react.
     if (options.dontInjectReact) return;
-    if (!options.parent && !gameParent) {
+    if (!options.parent) {
       let cont = document.createElement('div');
       let reactcont = document.createElement('div');
       document.body.appendChild(cont);
@@ -39,7 +39,9 @@ class ReactUI extends Plugins.BasePlugin {
 
       ReactDOM.render(<Renderer />, reactcont);
     } else {
-      ReactDOM.render(<Renderer />, document.getElementById(options.parent) || gameParent);
+      console.log(typeof gameParent)
+
+      ReactDOM.render(<Renderer />, document.getElementById(options.parent));
     }
   }
 
