@@ -17,6 +17,8 @@ yarn add phaser3-react react react-dom
 First add us to your game configs global plugins
 
 ```js
+import ReactUI from "phaser3-react";
+
 plugins: {
   global: [
     {
