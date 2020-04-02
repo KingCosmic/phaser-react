@@ -31,10 +31,11 @@ class ReactUI extends Plugins.BasePlugin {
     if (options.dontInjectReact) return;
     if (!options.parent && !gameParent) {
       let cont = document.createElement('div');
+      let reactcont = document.createElement('div');
       document.body.appendChild(cont);
 
       cont.appendChild(this.game.canvas);
-      let reactcont = cont.appendChild(document.createElement('div'));
+      cont.appendChild(reactcont);
 
       ReactDOM.render(<Renderer />, reactcont);
     } else {
