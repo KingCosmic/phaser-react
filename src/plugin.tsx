@@ -1,5 +1,5 @@
 import { Plugins } from 'phaser';
-import React, { ReactNode } from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
 import Renderer from './renderer';
@@ -16,7 +16,7 @@ type PluginOptions = {
 };
 
 const defaultOptions: PluginOptions = {
-  parent: undefined,
+  parent: '',
   dontInjectReact: false
 }
 
@@ -29,12 +29,12 @@ class ReactUI extends Plugins.BasePlugin {
   }
 
   init(options: PluginOptions = defaultOptions) {
-    // did they set a parent on the game config?
-    let gameParent = this.game.config.parent;
+    // did they set a parent on the game config? (idk why but config was null when i tried developing this)
+    let gameParent = this.game.config ? this.game.config.parent : null;
 
     options.parent = options.parent || gameParent;
 
-    // don't inject react if the user wants to use this plugin in react.
+    // don't inject react incase the user wants to use this plugin inside a react project.
     if (options.dontInjectReact) return;
     if (!options.parent) {
       let cont = document.createElement('div');
@@ -51,7 +51,7 @@ class ReactUI extends Plugins.BasePlugin {
     }
   }
 
-  createReactDom(component: ReactNode, props: Object) {
+  createReactDom(component: Component, props: Object) {
     return manager.addUI(component, props);
   }
 }
