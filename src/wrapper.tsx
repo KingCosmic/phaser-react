@@ -19,7 +19,7 @@ class Wrapper extends Component<Props> {
   }
 
   componentDidMount() {
-    this.stateManager.events.on('state-change', this.setState)
+    this.stateManager.events.on('state-change', this.setState, this);
   }
 
   render() {

@@ -1,7 +1,7 @@
 import * as webpack from 'webpack';
 
 const config: webpack.Configuration = {
-  entry: ['./index.tsx'],
+  entry: ['./index.ts'],
   module: {
     rules: [
       {
@@ -17,6 +17,14 @@ const config: webpack.Configuration = {
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js']
+  },
+  output: {
+    libraryTarget: 'umd',
+  },
+  externals: {
+    react: 'commonjs2 react',
+    'react-dom': 'commonjs2 react-dom',
+    phaser: 'commonjs2 phaser'
   }
 };
 

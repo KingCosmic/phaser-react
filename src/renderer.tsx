@@ -25,6 +25,8 @@ class Renderer extends Component<Props, State> {
     this.state = {
       components: []
     }
+
+    this.addComponent = this.addComponent.bind(this);
   }
 
   componentDidMount() {

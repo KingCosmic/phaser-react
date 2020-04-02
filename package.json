@@ -1,5 +1,5 @@
 {
-  "name": "phaser-react",
+  "name": "phaser3-react",
   "version": "1.0.0",
   "description": "a phaser plugin to make working with react ezpz",
   "main": "src/index.ts",
@@ -7,7 +7,7 @@
   "author": "Austyn Studdard <KingCosmicDev@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "webpack -p ./src/index.tsx"
+    "build": "webpack -p ./src/index.ts"
   },
   "dependencies": {
     "@types/react-dom": "^16.9.6",
