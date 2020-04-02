@@ -28,11 +28,10 @@ class ReactUI extends Plugins.BasePlugin {
     pluginManager.registerGameObject('reactDom', this.createReactDom);
   }
 
-  init(options: PluginOptions = defaultOptions) {
-    // did they set a parent on the game config? (idk why but config was null when i tried developing this)
-    let gameParent = this.game.config ? this.game.config.parent : null;
-
-    options.parent = options.parent || gameParent;
+  init(options: PluginOptions) {
+    options = { ...defaultOptions, ...options }
+    // did they set a parent on the game config?
+    let gameParent = this.game.config.parent;
 
     // don't inject react incase the user wants to use this plugin inside a react project.
     if (options.dontInjectReact) return;
