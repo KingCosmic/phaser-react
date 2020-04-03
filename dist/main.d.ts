@@ -12,12 +12,14 @@ import * as phaser from 'phaser';
 import { Component } from 'react';
 import { ComponentManager } from '../src/manager';
 
-interface GameObjectFactory {
-  reactDom(component: Component, state: Object): ComponentManager;
-}
+export function reactDom(component: Component, state: Object): ComponentManager;
 
 /*~ Here, declare the same module as the one you imported above */
 declare module 'phaser' {
+
+  class GameObjectFactory {
+    reactDom(component: Component, state: Object): ComponentManager;
+  }
 
   /*~ You can also add new properties to existing interfaces from
    *~ the original module by writing interface augmentations */
