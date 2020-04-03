@@ -1,5 +1,5 @@
 import { Plugins } from 'phaser';
-import React, { Component } from 'react';
+import React, { ElementType } from 'react';
 import ReactDOM from 'react-dom';
 
 import Renderer from './renderer';
@@ -56,7 +56,7 @@ class ReactUI extends Plugins.BasePlugin {
     }
   }
 
-  createReactDom(component: Component, props: Object) {
+  createReactDom(component: ElementType<any>, props: Object) {
     return manager.addComponent(component, props);
   }
 }

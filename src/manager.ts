@@ -1,11 +1,11 @@
 import eventemitter from 'eventemitter3';
-import { Component } from 'react';
+import { ElementType } from 'react';
 
 export class ComponentManager {
   events: eventemitter;
   mainManager: manager;
   id: number;
-  state: Object;
+  state: object;
 
   constructor(id: number, mainManager: manager) {
     this.events = new eventemitter();
@@ -15,7 +15,7 @@ export class ComponentManager {
     this.state = {};
   }
 
-  setState(state: Object) {
+  setState(state: object) {
     this.state = { ...this.state, ...state };
 
     this.events.emit('state-change', this.state);
@@ -36,7 +36,7 @@ class manager {
     this.lastID = 0;
   }
 
-  addComponent(component: Component, props: Object): ComponentManager {
+  addComponent(component: ElementType<any>, props: object): ComponentManager {
     this.lastID++
 
     let manager = new ComponentManager(this.lastID, this);

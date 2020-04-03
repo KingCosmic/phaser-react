@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, ReactElement } from 'react';
 
 import manager, { ComponentManager } from './manager';
 
 type Props = {
-  extraProps: Object;
+  extraProps: object;
   manager: ComponentManager,
   mainManager: typeof manager,
   Comp: any;

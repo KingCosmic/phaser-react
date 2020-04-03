@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component, ElementType } from 'react';
 
 import Wrapper from './wrapper';
 
 import manager, { ComponentManager } from './manager';
 
 type Comp = {
-  Component: Component,
-  props: Object,
+  Component: ElementType<any>,
+  props: object,
   manager: ComponentManager
   mainManager: typeof manager;
 }
@@ -20,7 +20,7 @@ type State = {
 }
 
 class Renderer extends Component<Props, State> {
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
