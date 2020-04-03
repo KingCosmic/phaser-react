@@ -9,14 +9,14 @@ export default Plugin;
 
 /*~ On this line, import the module which this module adds to */
 import * as phaser from 'phaser';
-import { Component } from 'react';
+import { ElementType } from 'react';
 import { ComponentManager } from '../src/manager';
 
 /*~ Here, declare the same module as the one you imported above */
 declare module 'phaser' {
   namespace GameObjects {
     interface GameObjectFactory {
-      reactDom(component: Component, state: object): ComponentManager;
+      reactDom(component: ElementType<any>, state: object): ComponentManager;
     }
   }
 }
