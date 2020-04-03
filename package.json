@@ -1,6 +1,6 @@
 {
   "name": "phaser3-react",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "description": "a phaser plugin to make working with react ezpz",
   "main": "./dist/main.js",
   "types": "./dist/main.d.ts",
