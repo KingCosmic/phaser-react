@@ -68,7 +68,7 @@ increaseScore() {
 #### properties
 state: the state object you've passed (incase you need the values for anything) not set from react.
 
-events: an event emitter system you can shoot events into and listen to in react if you need to (or other things).
+events: an event emitter system you can shoot events into and listen to in react or phaser if you need to (or other things).
 
 #### Methods
 setState(Object); takes and updaates the eternal state which is passed to your component via props.
