@@ -1,6 +1,5 @@
 import eventemitter from 'eventemitter3';
 import { ElementType } from 'react';
-import merge from 'merge-deep';
 
 export class ComponentManager {
   events: eventemitter;
@@ -17,7 +16,7 @@ export class ComponentManager {
   }
 
   setState(state: object) {
-    this.state = merge(this.state, state);
+    this.state = { ...this.state, state };
 
     this.events.emit('state-change', this.state);
   }

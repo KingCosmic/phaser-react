@@ -12,8 +12,7 @@
   },
   "dependencies": {
     "@types/react": "^16.9.31",
-    "eventemitter3": "^4.0.0",
-    "merge-deep": "^3.0.2"
+    "eventemitter3": "^4.0.0"
   },
   "devDependencies": {
     "@types/react-dom": "^16.9.6",
