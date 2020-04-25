@@ -30,8 +30,6 @@ class ReactUI extends Plugins.BasePlugin {
 
   init(options: PluginOptions) {
     options = { ...defaultOptions, ...options }
-    // did they set a parent on the game config?
-    let gameParent = this.game.config.parent;
 
     // don't inject react incase the user wants to use this plugin inside a react project.
     if (options.dontInjectReact) return;
@@ -43,11 +41,12 @@ class ReactUI extends Plugins.BasePlugin {
       cont.appendChild(this.game.canvas);
       cont.appendChild(reactcont);
       cont.style.position = 'relative'
-      reactcont.style.position = 'absolute';
+      reactcont.style.position = 'absolute'
       reactcont.style.top = '0'
       reactcont.style.left = '0'
       reactcont.style.width = '100%'
       reactcont.style.height = '100%'
+      reactcont.style.pointerEvents = 'none'
 
       ReactDOM.render(<Renderer />, reactcont);
     } else {
