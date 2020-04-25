@@ -27,7 +27,9 @@ class Wrapper extends Component<Props> {
     const { Comp, manager, mainManager } = this.props;
 
     return (
-      <Comp manager={manager} mainManager={mainManager} {...this.state} /> 
+      <div style={{ pointerEvents: 'auto' }}>
+        <Comp manager={manager} mainManager={mainManager} {...this.state} /> 
+      </div>
     )
   }
 }
