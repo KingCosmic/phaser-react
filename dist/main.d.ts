@@ -16,7 +16,7 @@ import { ComponentManager } from '../src/manager';
 declare module 'phaser' {
   namespace GameObjects {
     interface GameObjectFactory {
-      reactDom(component: ElementType<any>, state: object): ComponentManager;
+      reactDom(component: ElementType<any>, state?: object): ComponentManager;
     }
   }
 }

@@ -16,7 +16,7 @@ export class ComponentManager {
   }
 
   setState(state: object) {
-    this.state = { ...this.state, state };
+    this.state = { ...this.state, ...state };
 
     this.events.emit('state-change', this.state);
   }
@@ -36,7 +36,7 @@ class manager {
     this.lastID = 0;
   }
 
-  addComponent(component: ElementType<any>, props: object): ComponentManager {
+  addComponent(component: ElementType<any>, props?: object): ComponentManager {
     this.lastID++
 
     let manager = new ComponentManager(this.lastID, this);
@@ -44,7 +44,7 @@ class manager {
       mainManager: this,
       Component: component,
       manager,
-      props
+      props: props || {}
     })
 
     return manager;
