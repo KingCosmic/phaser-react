@@ -41,6 +41,7 @@ class ReactUI extends Plugins.BasePlugin {
       cont.appendChild(this.game.canvas);
       cont.appendChild(reactcont);
       cont.style.position = 'relative'
+      cont.style.height = '100%'
       reactcont.style.position = 'absolute'
       reactcont.style.top = '0'
       reactcont.style.left = '0'
