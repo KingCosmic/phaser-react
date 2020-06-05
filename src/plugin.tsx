@@ -33,26 +33,12 @@ class ReactUI extends Plugins.BasePlugin {
 
     // don't inject react incase the user wants to use this plugin inside a react project.
     if (options.dontInjectReact) return;
-    if (!options.parent) {
-      let cont = document.createElement('div');
-      let reactcont = document.createElement('div');
-      document.body.appendChild(cont);
 
-      cont.appendChild(this.game.canvas);
-      cont.appendChild(reactcont);
-      cont.style.position = 'relative'
-      reactcont.style.position = 'absolute'
-      reactcont.style.top = '0'
-      reactcont.style.left = '0'
-      reactcont.style.width = '100%'
-      reactcont.style.height = '100%'
-      reactcont.style.pointerEvents = 'none'
+    const container = this.game.domContainer
 
-      ReactDOM.render(<Renderer />, reactcont);
-    } else {
+    if (!container) return console.error('this plugins requires you have `dom: { createContainer: true }` in your game config')
 
-      ReactDOM.render(<Renderer />, document.getElementById(options.parent));
-    }
+    ReactDOM.render(<Renderer />, container);
   }
 
   createReactDom(component: ElementType<any>, props: Object) {
