@@ -18,17 +18,23 @@ yarn add phaser3-react react react-dom phaser
 
 First let us import the package and add the config to your game configs global plugins
 
+we require you have the dom.createContainer property set to true, which requires you to have a parent set in your div.
+
 ```js
 import phaserReact from "phaser3-react";
 
-plugins: {
-  global: [
-    {
-      key: 'phaser-react',
-      plugin: phaserReact,
-      start: true
-    }
-  ]
+const config = {
+  parent: 'your games parent divs id',
+  dom: { createContainer: true },
+  plugins: {
+    global: [
+      {
+        key: 'phaser-react',
+        plugin: phaserReact,
+        start: true
+      }
+    ]
+  }
 }
 ```
 ### Mounting the React Component
