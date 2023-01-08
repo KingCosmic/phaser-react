@@ -1,6 +1,6 @@
 import { Plugins } from 'phaser';
 import React, { ElementType } from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
 import Renderer from './renderer';
 
@@ -38,7 +38,7 @@ class ReactUI extends Plugins.BasePlugin {
 
     if (!container) return console.error('this plugins requires you have `dom: { createContainer: true }` in your game config')
 
-    ReactDOM.render(<Renderer />, container);
+    createRoot(<Renderer />, container);
   }
 
   createReactDom(component: ElementType<any>, props: Object) {
